@@ -9,8 +9,10 @@ function SearchBooks() {
 
   const [type, setType] = useState({
     title: "",
-    url: "",
-    imageUrl: "",
+    authors: "",
+    decsription: "",
+    image: "",
+    link: "",
   });
 
   function changeState(e) {
@@ -38,20 +40,24 @@ function SearchBooks() {
       });
   }
 
-//   function handleFormSubmit(title, url, image) {
-//     console.log(title);
+  function handleFormSubmit(title, authors, description, image, link) {
+    console.log(title);
 
-//     setType({
-//       title: title,
-//       url: url,
-//       image: image,
-//     });
-//     API.saveArticle({
-//       title: title,
-//       url: url,
-//       imageUrl: image,
-//     });
-//   }
+    setType({
+      title: title,
+      authors: authors,
+      description: description,
+      image: image,
+      link: link,
+    });
+    API.saveBook({
+      title: title,
+      authors: authors,
+      description: description,
+      image: image,
+      link: link,
+    });
+  }
 
   return (
     <div id="articlesBackground">
@@ -112,21 +118,20 @@ function SearchBooks() {
                           </li>
                         </ul>
                         <div className="card-body">
-                          {/* <button
+                          <button
                             className="articlesBtn"
                             onClick={() =>
                               handleFormSubmit(
-                                type.common_name,
-                                type.image_url,
-                                type.bibliography,
-                                type.family,
-                                type.genus,
-                                type.scientific_name
+                                type.volumeInfo.title,
+                                type.volumeInfo.authors,
+                                type.volumeInfo.description,
+                                type.volumeInfo.imageLinks.smallThumbnail,
+                                type.selfLink
                               )
                             }
                           >
                             Save to My Account
-                          </button> */}
+                          </button>
                         </div>
                       </div>
                     </div>
