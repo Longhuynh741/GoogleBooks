@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const db = require("../../models/");
 const jsonParser = bodyParser.json();
 
-router.get("/api/MyBooks", (req, res) => {
+router.get("/api/books", (req, res) => {
   console.log("Clicked to retrieve users");
   db.Books.find({})
     .then((foundBook) => {
@@ -14,7 +14,7 @@ router.get("/api/MyBooks", (req, res) => {
     });
 });
 
-router.post("/api/MyBooks/savedBooks", jsonParser, (req, res) => {
+router.post('/api/books', jsonParser, (req, res) => {
   var { title, authors, description, image, link } = req.body;
   db.Books.create({ title, authors, description, image, link })
     .then((newBook) => {
@@ -35,3 +35,21 @@ router.post("/api/MyBooks/savedBooks", jsonParser, (req, res) => {
 });
 
 module.exports = router;
+
+
+// const router = require("express").Router();
+// const booksController = require("../../controllers/booksController");
+
+// // Matches with "/api/books"
+// router.route("/")
+//   .get(booksController.findAll)
+//   .post(booksController.create);
+
+// // Matches with "/api/books/:id"
+// router
+//   .route("/:id")
+//   .get(booksController.findById)
+//   .put(booksController.update)
+//   .delete(booksController.remove);
+
+// module.exports = router;

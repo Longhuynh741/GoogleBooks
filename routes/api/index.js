@@ -1,13 +1,7 @@
-var express = require("express");
-var app = express();
-var router = express.Router();
+const router = require("express").Router();
+const bookRoutes = require("./books");
 
-router.get("/api/config", (req, res) => {
-  res.json({
-    success: true,
-    name: "bob",
-  });
-});
-
+// Book routes
+router.use("/books", bookRoutes);
 
 module.exports = router;

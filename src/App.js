@@ -1,6 +1,6 @@
 import './App.css';
 import MyBooks from './pages/MyBooks';
-import SearchBooks from './pages/SearchBooks';
+import SearchBooks from './pages/SearchBooks/Books';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from './components/Navbar/index';
 

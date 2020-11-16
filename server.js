@@ -2,14 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const routes = require("./routes/api/user");
-const router = require("./routes/api");
+const routes = require("./routes");
 const app = express();
+const PORT = process.env.PORT || 3002;
+const router = require("./routes/api/books");
 
-
-const PORT = process.env.PORT || 3001;
-
-app.use(routes);
+app.use(router);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -32,7 +30,7 @@ connection.on("error", (err) => {
   console.log("Mongoose connection error: ", err);
 });
 
-app.use(router);
+app.use(routes);
 
 app.get("/api/config", (req, res) => {
   res.json({
